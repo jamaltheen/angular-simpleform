@@ -1,0 +1,28 @@
+<form [formGroup]="form">
+  <input type="text" formControlName="name">
+  <input type="text"  formControlName="email">
+  <input type="text"  formControlName="mobileNumber">
+  <input type="text"  formControlName="address">
+  <button (click)="addToTable()" *ngIf="!isEdit"> Add   </button>
+  <button (click)="UpdateRow()"  *ngIf="isEdit"> Update   </button>
+</form>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Mobile Number</th>
+    <th>Address</th>
+  </tr>
+  <tr *ngFor="let item of dataSource; let i = index">
+    <td>
+      <button (click)="edit(item, i)">edit</button>
+      <button  (click)="delete(item, i)">delete</button>
+    </td>
+    <td>{{item.name}}</td>
+    <td>{{item.email}}</td>
+    <td>{{item.mobileNumber}}</td>
+    <td>{{item.address}}</td>
+  </tr>
+</table>
